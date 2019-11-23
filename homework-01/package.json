@@ -7,12 +7,12 @@
     "lint": "eslint --ignore-path .gitignore . --fix",
     "start": "npm run lint && node src/index.js"
   },
-    "husky": {
-      "hooks": {
-        "pre-commit": "npm run lint",
-        "pre-push": "npm run lint"
-      }
-    },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint",
+      "pre-push": "npm run lint"
+    }
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
