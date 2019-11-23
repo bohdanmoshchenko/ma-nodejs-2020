@@ -1,18 +1,18 @@
-const vegetables = ['potato', 'tomato', 'cucumber'];
-const fruits = ['apple', 'pineapple', 'banana'];
+const vegetables = ["potato", "tomato", "cucumber"];
+const fruits = ["apple", "pineapple", "banana"];
 
-const word = 'cucumber';
+const word = "cucumber";
 if (vegetables.includes(word)) {
-    console.log(Object.keys({vegetables}));
+  console.log(Object.keys({ vegetables }));
 } else if (fruits.includes(word)) {
-    console.log(Object.keys({fruits}));
+  console.log(Object.keys({ fruits }));
 }
 
 switch (true) {
-    case vegetables.includes(word):
-        console.log(Object.keys({vegetables}));
-        break;
-    case fruits.includes(word):
-        console.log(Object.keys({fruits}));
-        break;
+  case vegetables.includes(word):
+    console.log(Object.keys({ vegetables }));
+    break;
+  case fruits.includes(word):
+    console.log(Object.keys({ fruits }));
+    break;
 }

@@ -1,5 +1,5 @@
 let objectA = {
-    name: "Object A"
+  name: "Object A"
 };
 console.log(objectA);
 
