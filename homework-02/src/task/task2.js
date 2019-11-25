@@ -10,11 +10,10 @@ class Planet {
   }
 
   showInfo() {
-    const msg = `Планета ${this.name} має об'єм ${this.volume}`;
-    console.log(msg);
+    return `Планета ${this.name} має об'єм ${this.volume}`;
   }
 }
 
 class Earth extends Planet {}
 
-module.exports = new Earth('Земля', 12);
+module.exports.earthInfo = new Earth('Земля', 12).showInfo();

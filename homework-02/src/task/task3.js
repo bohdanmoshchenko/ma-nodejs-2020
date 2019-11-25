@@ -1,10 +1,7 @@
-/* eslint-disable func-names */
 function setTimeoutPromise(milliseconds, text) {
-  return new Promise(function(resolve) {
+  return new Promise(resolve => {
     setTimeout(() => resolve(text), milliseconds);
   });
 }
 
-module.exports = {
-  setTimeoutPromise,
-};
+module.exports.setTimeoutPromise = setTimeoutPromise(2000, 'Done!');
