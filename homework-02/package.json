@@ -5,7 +5,7 @@
   "main": "app.js",
   "scripts": {
     "lint": "eslint --ignore-path .gitignore . --fix",
-    "start": "npm run lint && node app.js"
+    "start": "npm run lint && node ./src/app.js"
   },
   "husky": {
     "hooks": {
