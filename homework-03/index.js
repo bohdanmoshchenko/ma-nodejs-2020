@@ -4,7 +4,7 @@ function isPrime(number) {
   }
   for (let index = 2; index < number; index++) {
     if (number % index === 0) {
-      false;
+      return false;
     }
   }
   return true;
@@ -12,13 +12,10 @@ function isPrime(number) {
 
 function generatePrimeNumbersWithDelay(delay) {
   let i = 2;
-  let currentPrimeNumber = i;
-  setInterval(
-    console.log(
-      new Date() + "--Biggest prime number found: " + currentPrimeNumber
-    ),
-    delay
-  );
+  let currentPrimeNumber = 2;
+  setInterval(function() {
+    console.log(`${Date.now()} -- Biggest prime number found: ${currentPrimeNumber}`);
+  }, delay);
   while (true) {
     if (isPrime(i)) {
       currentPrimeNumber = i;

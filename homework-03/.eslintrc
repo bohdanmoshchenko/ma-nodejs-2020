@@ -5,10 +5,12 @@
     "node": true
   },
   "rules": {
+    "no-plusplus": "off",
+    "no-unused-expressions": "off",
     "no-console": "off",
-    "max-classes-per-file": "off",
-    "no-restricted-properties": "off",
     "no-constant-condition": "off",
-    "no-unused-vars": "off"
+    "no-unused-vars": "off",
+    "no-undef": "off",
+    "func-names": "off"
   }
 }
