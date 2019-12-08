@@ -4,5 +4,9 @@
   "env": {
     "node": true
   },
-  "rules": {}
+  "rules": {
+    "no-console": "off",
+    "no-unused-vars": "off",
+    "no-shadow": "off"
+  }
 }

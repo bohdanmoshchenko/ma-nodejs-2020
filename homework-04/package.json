@@ -2,10 +2,9 @@
   "name": "homework-02",
   "version": "1.0.0",
   "description": "Project setup",
-  "main": "index.js",
+  "main": "",
   "scripts": {
-    "lint": "eslint --ignore-path .gitignore . --fix",
-    "start": "npm run lint && node index.js"
+    "lint": "eslint --ignore-path .gitignore . --fix"
   },
   "husky": {
     "hooks": {
