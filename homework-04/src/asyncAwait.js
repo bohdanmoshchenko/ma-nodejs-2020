@@ -11,8 +11,8 @@ function throwDice(maxValue) {
   return result;
 }
 
-function throwDiceWithDelay(maxValue, delay) {
-  return new Promise((resolve, reject) => {
+async function throwDiceWithDelay(maxValue, delay) {
+  return await new Promise((resolve, reject) => {
     setTimeout(() => {
       const result = throwDice(maxValue);
       if (result === 0) {
