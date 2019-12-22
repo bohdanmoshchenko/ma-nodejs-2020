@@ -2,9 +2,13 @@ const os = require('os');
 
 const processEnv = process.env;
 
-let rate = processEnv.RATE || 1000;
-let limit = processEnv.LIMIT || 300;
-let color = processEnv.COLOR || true;
+let rate = Number(processEnv.RATE) || 1000;
+let limit = Number(processEnv.LIMIT) || 300;
+let color = Boolean(processEnv.COLOR);
+if (color === undefined) {
+  color = true;
+  console.log(color);
+}
 
 const fixedDigitsAfterZero = 3;
 
@@ -38,6 +42,8 @@ function showMemStatisticMessage() {
   console.log('Total system memory: ', totalMemory);
 
   if (color === true) {
+    console.log('COLOR TRU');
+
     if (freeMemory < limit) {
       colorTemplate = redColorTemplate;
     } else {
@@ -54,54 +60,48 @@ function showMemStatisticMessage() {
     } else if (memoryDelta > 0) {
       colorTemplate = greenColorTemplate;
     }
+  } else {
+    colorTemplate = defaultColorTemplate;
   }
   console.log(colorTemplate, 'Delta for previous allocated memory value: ', memoryDelta);
 
-  if (freeMemory < limit) {
-    console.log(
-      '\x1b[31m%s\x1b[0m',
-      '!!! ATTENTION: Available memory is under the defined limit !!!',
-    );
+  if (color === true) {
+    if (freeMemory < limit) {
+      console.log(
+        '\x1b[31m%s\x1b[0m',
+        '!!! ATTENTION: Available memory is under the defined limit !!!',
+      );
+    }
   }
 }
 
 function app() {
   const processArgs = process.argv.slice(2);
   processArgs.forEach(element => {
-    // eslint-disable-next-line no-param-reassign
-    element = element.replace('--');
-    console.log(element);
-  });
-  processArgs.forEach(element => {
-    const paramValue = element.slice('=');
-    console.log(paramValue[0]);
+    const paramValue = element.replace('--', '').split('=');
     // eslint-disable-next-line default-case
-    switch (String.prototype.toLowerCase(paramValue[0])) {
+    switch (paramValue[0].toLowerCase()) {
       case 'rate':
         try {
-          rate = paramValue[1] || 0;
-        } catch (error) {
-          throw new Error(`Wrong value for parameter ${paramValue[0]}`);
-        }
-      // eslint-disable-next-line no-fallthrough
+          rate = Number(paramValue[1]) || rate;
+          // eslint-disable-next-line no-empty
+        } catch (error) {}
+        break;
       case 'limit':
         try {
-          limit = paramValue[1] || 0;
-        } catch (error) {
-          throw new Error(`Wrong value for parameter ${paramValue[0]}`);
-        }
-      // eslint-disable-next-line no-fallthrough
+          limit = Number(paramValue[1]) || limit;
+          // eslint-disable-next-line no-empty
+        } catch (error) {}
+        break;
       case 'color':
         try {
-          color = paramValue[1] || 0;
-        } catch (error) {
-          throw new Error(`Wrong value for parameter ${paramValue[0]}`);
-        }
+          color = Boolean(paramValue[1]) || color;
+          // eslint-disable-next-line no-empty
+        } catch (error) {}
+        break;
     }
   });
-
   showInConsoleInInfinityLoopWithTimeOut(showMemStatisticMessage, rate);
-  console.log();
 }
 
 module.exports = { app };
