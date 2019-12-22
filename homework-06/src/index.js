@@ -5,6 +5,9 @@ const processEnv = process.env;
 let rate = Number(processEnv.RATE) || 1000;
 let limit = Number(processEnv.LIMIT) || 300;
 let color = processEnv.COLOR === 'true';
+if (processEnv.COLOR === undefined) {
+  color = true;
+}
 
 const fixedDigitsAfterZero = 3;
 
