@@ -4,11 +4,7 @@ const processEnv = process.env;
 
 let rate = Number(processEnv.RATE) || 1000;
 let limit = Number(processEnv.LIMIT) || 300;
-let color = Boolean(processEnv.COLOR);
-if (color === undefined) {
-  color = true;
-  console.log(color);
-}
+let color = processEnv.COLOR === 'true';
 
 const fixedDigitsAfterZero = 3;
 
@@ -42,8 +38,6 @@ function showMemStatisticMessage() {
   console.log('Total system memory: ', totalMemory);
 
   if (color === true) {
-    console.log('COLOR TRU');
-
     if (freeMemory < limit) {
       colorTemplate = redColorTemplate;
     } else {
@@ -60,8 +54,6 @@ function showMemStatisticMessage() {
     } else if (memoryDelta > 0) {
       colorTemplate = greenColorTemplate;
     }
-  } else {
-    colorTemplate = defaultColorTemplate;
   }
   console.log(colorTemplate, 'Delta for previous allocated memory value: ', memoryDelta);
 
