@@ -1,0 +1,35 @@
+{
+  "name": "homework-07",
+  "version": "1.0.0",
+  "description": "Homework-07/ HTTP",
+  "main": "app.js",
+  "scripts": {
+    "lint": "eslint --ignore-path ./.gitignore . --fix",
+    "start": "npm run lint && node ./app.js"
+  },
+  "husky": {
+    "pre-push": "npm run lint",
+    "hooks": {
+      "pre-commit": "npm run lint",
+      "pre-push": "npm run lint"
+    }
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "init-gitignore": "^1.0.2"
+  },
+  "devDependencies": {
+    "eslint": "^6.6.0",
+    "eslint-config-airbnb": "^18.0.1",
+    "eslint-config-prettier": "^6.5.0",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-prettier": "^3.1.1",
+    "eslint-plugin-react": "^7.16.0",
+    "eslint-plugin-react-hooks": "^1.7.0",
+    "husky": "^3.0.9",
+    "prettier": "^1.19.1"
+  }
+}
